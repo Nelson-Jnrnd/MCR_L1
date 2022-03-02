@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
+<classDiagram>
+  <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="">
+    <inheritance id="26363">
+      <child>26362</child>
+      <parent>26097</parent>
+    </inheritance>
+    <entity entityType="CLASS" id="26362" isAbstract="false" name="Circle" visibility="PUBLIC"/>
+    <inheritance id="26361">
+      <child>26351</child>
+      <parent>26097</parent>
+    </inheritance>
+    <entity entityType="CLASS" id="26351" isAbstract="false" name="Square" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="26097" isAbstract="true" name="Shape" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="size" type="int" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="start" type="Vector" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="destination" type="Vector" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="travelTime" type="int" visibility="PRIVATE"/>
+      <method isAbstract="false" isStatic="false" name="move" returnType="void" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="time" type="float"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="changeDirection" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="true" isStatic="false" name="draw" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
+  </diagramElements>
+  <umlView grid="10" name="Main view" open="true">
+    <relationView color="-12566464" relationId="26361">
+      <line>
+        <point>
+          <x>321</x>
+          <y>461</y>
+        </point>
+        <point>
+          <x>321</x>
+          <y>401</y>
+        </point>
+        <point>
+          <x>391</x>
+          <y>401</y>
+        </point>
+        <point>
+          <x>391</x>
+          <y>311</y>
+        </point>
+      </line>
+    </relationView>
+    <relationView color="-12566464" relationId="26363">
+      <line>
+        <point>
+          <x>541</x>
+          <y>461</y>
+        </point>
+        <point>
+          <x>541</x>
+          <y>401</y>
+        </point>
+        <point>
+          <x>391</x>
+          <y>401</y>
+        </point>
+        <point>
+          <x>391</x>
+          <y>311</y>
+        </point>
+      </line>
+    </relationView>
+    <componentView color="-2079" componentID="26097" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>240</x>
+        <y>150</y>
+        <w>290</w>
+        <h>160</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="26351" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>240</x>
+        <y>460</y>
+        <w>150</w>
+        <h>55</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="26362" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>450</x>
+        <y>460</y>
+        <w>150</w>
+        <h>55</h>
+      </geometry>
+    </componentView>
+  </umlView>
+</classDiagram>
