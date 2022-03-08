@@ -48,7 +48,7 @@ public class roundsAndSquares extends JPanel {
         for (Shape s: shapes) {
             s.draw(g2d);
         }
-        g2d.drawRect(0, 0, 100, 100);
+        g2d.drawRect(0, 0, this.canvasWidth, this.canvasHeight);
         g2d.dispose();
     }
 
@@ -60,15 +60,15 @@ public class roundsAndSquares extends JPanel {
 
     private void generateShapes(int nbCircles, int nbSquares){
         for (int i = 0; i < nbCircles; i++) {
-            shapes.add(new Circle(rnd.nextInt(30), 0.01, 0,
+            shapes.add(new Circle(rnd.nextInt(30),
                     randomPointOnRectangleEdge(this.canvasWidth, this.canvasHeight),
-                    randomPointOnRectangleEdge(this.canvasWidth, this.canvasHeight),
+                    new Vector(-10 + rnd.nextInt(20), -10 + rnd.nextInt(20)),
                     new Vector(0, 0), new Vector(this.canvasWidth, this.canvasHeight)));
         }
         for (int i = 0; i < nbSquares; i++) {
-            shapes.add(new Square(rnd.nextInt(30), 0.01, 0,
+            shapes.add(new Square(rnd.nextInt(30),
                     randomPointOnRectangleEdge(this.canvasWidth, this.canvasHeight),
-                    randomPointOnRectangleEdge(this.canvasWidth, this.canvasHeight),
+                    new Vector(-10 + rnd.nextInt(20), -10 + rnd.nextInt(20)),
                     new Vector(0, 0), new Vector(this.canvasWidth, this.canvasHeight)));
         }
     }

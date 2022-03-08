@@ -3,9 +3,9 @@ import java.awt.*;
 public abstract class BouncingShape extends Shape{
     private Vector lowerBounds;
     private Vector higherBounds;
-    public BouncingShape(int size, double speed, double time, Vector start, Vector destination,
+    public BouncingShape(int size, Vector start, Vector velocity,
                          Vector lowerBounds, Vector higherBounds) {
-        super(size, speed, time, start, destination);
+        super(size, start, velocity);
         this.lowerBounds = lowerBounds;
         this.higherBounds = higherBounds;
     }
@@ -14,33 +14,25 @@ public abstract class BouncingShape extends Shape{
     public void move() {
         super.move();
         Vector pos = position();
-        if(pos.getI() < lowerBounds.getI() || pos.getJ() < lowerBounds.getJ() || pos.getI() > higherBounds.getI()
-                || pos.getJ() > higherBounds.getJ() ){
+        if(pos.getI() - size / 2 < lowerBounds.getI() || pos.getJ() - size / 2 < lowerBounds.getJ() || pos.getI() + size / 2 > higherBounds.getI()
+                || pos.getJ() + size / 2 > higherBounds.getJ() ){
             bounce();
         }
     }
 
     private void bounce() {
-
-       /*Vector wall;
+       /*Vector wall;*/
         if(position().getI() < lowerBounds.getI() || position().getI() > higherBounds.getI()){
             // top or bottom wall
-            //destination = start.sub(position()).getMirrorXVector();
-            int diff = position().getI() - start.getI();
-            destination = new Vector(position().getI() + destination.getI(), start.getJ());
-            //wall = new Vector(lowerBounds.getI(), higherBounds.getI());
+            velocity = velocity.getMirrorYVector();
         } else{
             // left or right wall
-            //wall = new Vector(lowerBounds.getJ(), higherBounds.getJ());
-            int diff = position().getJ() - start.getJ();
-            destination = new Vector(start.getI(), position().getJ() + destination.getJ());
-            //destination = start.sub(position()).getMirrorYVector();
+            velocity = velocity.getMirrorXVector();
         }
         //destination.add(position().reflectionAcrossLine(wall));
-*/
-       destination = start;
+      /* destination = start;
        start = position();
 
-        this.time = 0;
+        this.time = 0;*/
     }
 }

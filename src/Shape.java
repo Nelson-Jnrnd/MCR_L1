@@ -6,18 +6,13 @@ import java.awt.event.ActionListener;
 public abstract class Shape {
 
     protected int size;
-    protected double time;
-    protected double speed;
-    protected Vector start;
-    protected Vector destination;
-    private Vector position;
+    protected Vector position;
+    protected Vector velocity;
 
-    public Shape(int size, double speed, double time, Vector start, Vector destination) {
+    public Shape(int size, Vector start, Vector velocity) {
         this.size = size;
-        this.speed = speed;
-        this.time = time;
-        this.start = start;
-        this.destination = destination;
+        this.position = start;
+        this.velocity = velocity;
     }
 
     public Vector position(){
@@ -25,8 +20,7 @@ public abstract class Shape {
     }
 
     public void move(){
-        time += speed;
-        position = start.add(destination.sub(start).multiply(time));
+        position = position.add(velocity);
     }
 
     abstract void draw(Graphics g);
