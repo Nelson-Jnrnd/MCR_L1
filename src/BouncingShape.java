@@ -12,27 +12,25 @@ public abstract class BouncingShape extends Shape{
 
     @Override
     public void move() {
-        super.move();
-        Vector pos = position();
+        Vector pos = position().add(velocity);
+
         if(pos.getI() - size / 2 < lowerBounds.getI() || pos.getJ() - size / 2 < lowerBounds.getJ() || pos.getI() + size / 2 > higherBounds.getI()
                 || pos.getJ() + size / 2 > higherBounds.getJ() ){
             bounce();
         }
+        super.move();
     }
 
     private void bounce() {
-       /*Vector wall;*/
-        if(position().getI() < lowerBounds.getI() || position().getI() > higherBounds.getI()){
-            // top or bottom wall
-            velocity = velocity.getMirrorYVector();
-        } else{
-            // left or right wall
-            velocity = velocity.getMirrorXVector();
-        }
-        //destination.add(position().reflectionAcrossLine(wall));
-      /* destination = start;
-       start = position();
 
-        this.time = 0;*/
+        if(position().getI() -  size / 2 < lowerBounds.getI()){
+            velocity.setI(Math.abs(velocity.getI()));
+        } else if(position.getI() + size / 2 > higherBounds.getI()){
+            velocity.setI(-Math.abs(velocity.getI()));
+        } else if (position.getJ() - size / 2 < lowerBounds.getJ()){
+            velocity.setJ(Math.abs(velocity.getJ()));
+        } else if(position.getJ() + size / 2 > higherBounds.getJ()){
+            velocity.setJ(-Math.abs(velocity.getJ()));
+        }
     }
 }

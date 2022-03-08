@@ -18,7 +18,7 @@ public class roundsAndSquares extends JPanel {
         shapes = new LinkedList<>();
         this.canvasWidth = canvasWidth;
         this.canvasHeight = canvasHeight;
-        generateShapes(10, 10);
+        generateShapes(1000, 1000);
         updateShapes = new Timer(10, new ActionListener() { // 100 times per s
             public void actionPerformed(ActionEvent evt) {
                 update();
@@ -41,14 +41,14 @@ public class roundsAndSquares extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+        super.paintComponent(g);    
         setBackground(Color.white);
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         for (Shape s: shapes) {
             s.draw(g2d);
         }
-        g2d.drawRect(0, 0, this.canvasWidth, this.canvasHeight);
+        g2d.drawRect(100, 100, this.canvasWidth, this.canvasHeight);
         g2d.dispose();
     }
 
@@ -63,13 +63,13 @@ public class roundsAndSquares extends JPanel {
             shapes.add(new Circle(rnd.nextInt(30),
                     randomPointOnRectangleEdge(this.canvasWidth, this.canvasHeight),
                     new Vector(-10 + rnd.nextInt(20), -10 + rnd.nextInt(20)),
-                    new Vector(0, 0), new Vector(this.canvasWidth, this.canvasHeight)));
+                    new Vector(100, 100), new Vector(this.canvasWidth, this.canvasHeight)));
         }
         for (int i = 0; i < nbSquares; i++) {
             shapes.add(new Square(rnd.nextInt(30),
                     randomPointOnRectangleEdge(this.canvasWidth, this.canvasHeight),
                     new Vector(-10 + rnd.nextInt(20), -10 + rnd.nextInt(20)),
-                    new Vector(0, 0), new Vector(this.canvasWidth, this.canvasHeight)));
+                    new Vector(100, 100), new Vector(this.canvasWidth, this.canvasHeight)));
         }
     }
 
@@ -93,7 +93,7 @@ public class roundsAndSquares extends JPanel {
 
     public static void main(String[] args) {
         JFrame f = new JFrame();
-        f.setSize(500, 500);
+        f.setSize(1000, 1000);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         roundsAndSquares main = new roundsAndSquares(500, 500);
         f.add(main);
