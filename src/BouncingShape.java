@@ -26,14 +26,18 @@ public abstract class BouncingShape extends Shape{
         if(position().getI() < lowerBounds.getI() || position().getI() > higherBounds.getI()){
             // top or bottom wall
             //destination = start.sub(position()).getMirrorXVector();
-            wall = new Vector(lowerBounds.getI(), higherBounds.getI());
+            int diff = position().getI() - start.getI();
+            destination = new Vector(position().getI() + destination.getI(), start.getJ());
+            //wall = new Vector(lowerBounds.getI(), higherBounds.getI());
         } else{
             // left or right wall
-            wall = new Vector(lowerBounds.getJ(), higherBounds.getJ());
+            //wall = new Vector(lowerBounds.getJ(), higherBounds.getJ());
+            int diff = position().getJ() - start.getJ();
+            destination = new Vector(start.getI(), position().getJ() + destination.getJ());
             //destination = start.sub(position()).getMirrorYVector();
         }
-        destination.add(position().reflectionAcrossLine(wall));
-        */
+        //destination.add(position().reflectionAcrossLine(wall));
+*/
        destination = start;
        start = position();
 
