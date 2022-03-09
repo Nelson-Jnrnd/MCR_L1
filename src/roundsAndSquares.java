@@ -41,7 +41,7 @@ public class roundsAndSquares extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);    
+        super.paintComponent(g);
         setBackground(Color.white);
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -61,32 +61,32 @@ public class roundsAndSquares extends JPanel {
     private void generateShapes(int nbCircles, int nbSquares){
         for (int i = 0; i < nbCircles; i++) {
             shapes.add(new Circle(rnd.nextInt(30),
-                    randomPointOnRectangleEdge(this.canvasWidth, this.canvasHeight),
+                    new Vector(rnd.nextInt(this.canvasWidth) + 100, rnd.nextInt(this.canvasHeight) + 100),
                     new Vector(-10 + rnd.nextInt(20), -10 + rnd.nextInt(20)),
-                    new Vector(100, 100), new Vector(this.canvasWidth, this.canvasHeight)));
+                    new Vector(100, 100), new Vector(this.canvasWidth + 100, this.canvasHeight + 100))); // TODO change upper bounds to be relative to lower bounds
         }
         for (int i = 0; i < nbSquares; i++) {
             shapes.add(new Square(rnd.nextInt(30),
-                    randomPointOnRectangleEdge(this.canvasWidth, this.canvasHeight),
+                    new Vector(rnd.nextInt(this.canvasWidth) + 100, rnd.nextInt(this.canvasHeight) + 100),
                     new Vector(-10 + rnd.nextInt(20), -10 + rnd.nextInt(20)),
-                    new Vector(100, 100), new Vector(this.canvasWidth, this.canvasHeight)));
+                    new Vector(100, 100), new Vector(this.canvasWidth + 100, this.canvasHeight + 100)));
         }
     }
 
-    private Vector randomPointOnRectangleEdge(int width , int height){
+    private Vector randomPointOnRectangleEdge(int x, int y, int width , int height){
         int pos = rnd.nextInt(2*width + 2*height);
         if(pos < width + height){
             if(pos < width){
-                return new Vector(pos, 0);
+                return new Vector(pos + x, y);
             } else{
-                return new Vector(width, pos - width);
+                return new Vector(width + x, pos + y - width);
             }
         } else{
             pos -= width + height;
             if(pos < width){
-                return new Vector(width - pos, height);
+                return new Vector(width - pos + x, height + y);
             } else{
-                return new Vector(0, height - (pos - width));
+                return new Vector(x, height - (pos - width) + y);
             }
         }
     }
