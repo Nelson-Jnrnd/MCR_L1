@@ -3,8 +3,8 @@ import java.awt.*;
 public class Square extends BouncingShape{
 
     public Square(int size, Vector start, Vector velocity,
-                  Vector lowerBounds, Vector higherBounds){
-        super(size, start, velocity, lowerBounds, higherBounds);
+                  Rectangle bounds){
+        super(size, start, velocity, bounds);
     }
 
     @Override

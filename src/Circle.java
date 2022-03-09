@@ -1,8 +1,8 @@
 import java.awt.*;
 
 public class Circle extends BouncingShape{
-    public Circle(int size, Vector start, Vector velocity, Vector lowerBounds, Vector higherBounds) {
-        super(size, start, velocity, lowerBounds, higherBounds);
+    public Circle(int size, Vector start, Vector velocity, Rectangle bounds) {
+        super(size, start, velocity, bounds);
     }
 
     @Override

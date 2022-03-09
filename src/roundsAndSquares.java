@@ -28,15 +28,6 @@ public class roundsAndSquares extends JPanel {
 
         updateShapes.setRepeats(true);
         updateShapes.start();
-
-        refresh = new Timer(16, new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                repaint();
-            }
-        });
-
-        refresh.setRepeats(true);
-        //refresh.start();
     }
 
     @Override
@@ -63,13 +54,13 @@ public class roundsAndSquares extends JPanel {
             shapes.add(new Circle(rnd.nextInt(30),
                     new Vector(rnd.nextInt(this.canvasWidth) + 100, rnd.nextInt(this.canvasHeight) + 100),
                     new Vector(-10 + rnd.nextInt(20), -10 + rnd.nextInt(20)),
-                    new Vector(100, 100), new Vector(this.canvasWidth + 100, this.canvasHeight + 100))); // TODO change upper bounds to be relative to lower bounds
+                    new Rectangle(100, 100, this.canvasWidth, this.canvasHeight))); // TODO change upper bounds to be relative to lower bounds
         }
         for (int i = 0; i < nbSquares; i++) {
             shapes.add(new Square(rnd.nextInt(30),
                     new Vector(rnd.nextInt(this.canvasWidth) + 100, rnd.nextInt(this.canvasHeight) + 100),
                     new Vector(-10 + rnd.nextInt(20), -10 + rnd.nextInt(20)),
-                    new Vector(100, 100), new Vector(this.canvasWidth + 100, this.canvasHeight + 100)));
+                    new Rectangle(100, 100, this.canvasWidth, this.canvasHeight)));
         }
     }
 
