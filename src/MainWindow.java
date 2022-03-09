@@ -2,13 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainWindow implements Displayer {
+    private static MainWindow instance;
+
     private Image image;
     private Dimension imageDimensions;
     private Graphics2D graphics2D;
     private JFrame frame;
     private JPanel panel;
 
-    public MainWindow() {
+    private MainWindow() {
         frame = new JFrame();
         frame.setSize(1000, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,6 +25,11 @@ public class MainWindow implements Displayer {
         graphics2D = (Graphics2D) image.getGraphics();
     }
 
+    public static MainWindow getInstance(){
+        if(instance == null)
+            instance = new MainWindow();
+        return instance;
+    }
 
     @Override
     public int getWidth() {
